@@ -49,7 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="JailRosterDataContext.cs" />
     <Compile Include="Detainee.cs" />
     <Compile Include="Offense.cs" />
     <Compile Include="Program.cs" />
