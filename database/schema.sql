@@ -191,3 +191,26 @@ GO
 
 ALTER TABLE [dbo].[Offenses] CHECK CONSTRAINT [FK_dbo.Offenses_dbo.Detainees_DetaineeId]
 GO
+
+INSERT [dbo].[OffenseLevels] ([OffenseLevel], [OffenseSeriousness]) VALUES (N'A FELONY', 100)
+GO
+INSERT [dbo].[OffenseLevels] ([OffenseLevel], [OffenseSeriousness]) VALUES (N'AGGRAVATED MISDEMEANOR', 30)
+GO
+INSERT [dbo].[OffenseLevels] ([OffenseLevel], [OffenseSeriousness]) VALUES (N'B FELONY', 80)
+GO
+INSERT [dbo].[OffenseLevels] ([OffenseLevel], [OffenseSeriousness]) VALUES (N'C FELONY', 60)
+GO
+INSERT [dbo].[OffenseLevels] ([OffenseLevel], [OffenseSeriousness]) VALUES (N'CONTEMPT', 20)
+GO
+INSERT [dbo].[OffenseLevels] ([OffenseLevel], [OffenseSeriousness]) VALUES (N'D FELONY', 40)
+GO
+INSERT [dbo].[OffenseLevels] ([OffenseLevel], [OffenseSeriousness]) VALUES (N'NSCH', 0)
+GO
+INSERT [dbo].[OffenseLevels] ([OffenseLevel], [OffenseSeriousness]) VALUES (N'OTHER', 0)
+GO
+INSERT [dbo].[OffenseLevels] ([OffenseLevel], [OffenseSeriousness]) VALUES (N'SCHT', 0)
+GO
+INSERT [dbo].[OffenseLevels] ([OffenseLevel], [OffenseSeriousness]) VALUES (N'SERIOUS MISDEMEANOR', 25)
+GO
+INSERT [dbo].[OffenseLevels] ([OffenseLevel], [OffenseSeriousness]) VALUES (N'SIMPLE MISDEMEANOR', 20)
+GO
