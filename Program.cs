@@ -14,9 +14,13 @@ namespace JailRoster
                 var index = ScrapeIndex();
                 foreach ( var detailUrl in index )
                     try {
-                        dataContext.Detainees.Add( ScrapeDetainee("https://ww1.johnson-county.com/" + detailUrl ) );
+                        var detainee = ScrapeDetainee("https://ww1.johnson-county.com/" + detailUrl );
+                        detainee.ReportDate = DateTime.Today;
+                        dataContext.Detainees.Add( detainee );
                         }
-                    catch {
+                    catch ( Exception ex ) // Jail Roster MVC frontend is buggy
+                        {
+                        Console.WriteLine( ex.Message + ex.StackTrace );
                         }
                 dataContext.SaveChanges();
                 }
@@ -27,10 +31,11 @@ namespace JailRoster
             var index = new WebClient().DownloadString( "https://ww1.johnson-county.com/Sheriff/JailRoster/FullList/?filter=RosterType%3Aall%7CName%3A" );
             var doc = new HtmlAgilityPack.HtmlDocument();
             doc.LoadHtml( index );
-        var trs = doc.DocumentNode.SelectNodes("//table[@class='data']/tr[string-length(@id) > 0]").ToArray();
-        var details = trs.Select( x=> x.SelectSingleNode( "td/span[@id='details']/input").GetAttributeValue( "value", "" )).ToArray();
+            var trs = doc.DocumentNode.SelectNodes("//table[@class='data']/tr[string-length(@id) > 0]").ToArray();
+            var details = trs.Select( x=> x.SelectSingleNode( "td/span[@id='details']/input").GetAttributeValue( "value", "" )).ToArray();
             return details.ToArray();
             }
+
         static private Detainee   ScrapeDetainee( string url )
             {
             var details = new WebClient().DownloadString( url );
