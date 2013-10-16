@@ -7,9 +7,13 @@ namespace JailRoster
     {
     class ExportCommand : ConsoleCommand
         {
+        private string _outputFile;
+
         public ExportCommand()
             {
             IsCommand( "export" );
+            HasRequiredOption("outputFile=", "output file.", s => { _outputFile = s; });
+
             }
 
         public override int Run(string[] remainingArguments)
@@ -35,7 +39,7 @@ namespace JailRoster
                                         ChargeReleased = o.ChargeReleased
                                         };
 
-                using ( var textWriter = new StreamWriter( "export.csv" ) )
+                using ( var textWriter = new StreamWriter( _outputFile ) )
                 using ( var csvWriter = new CsvHelper.CsvWriter( textWriter ) )
                     csvWriter.WriteRecords( records );
                 }
